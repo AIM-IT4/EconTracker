@@ -5,62 +5,6 @@ from fredapi import Fred
 KEY = '613446531ab453c057bdd1df7ec37bbb'
 fred = Fred(api_key=KEY)
 
-import streamlit as st
-import sqlite3
-
-# Create the database and table if they don't exist
-conn = sqlite3.connect("users.db")
-cursor = conn.cursor()
-cursor.execute("""
-CREATE TABLE IF NOT EXISTS users (
-    username text,
-    password text
-)
-""")
-conn.commit()
-
-def main():
-    # Show the signup/login page
-    menu = ["Signup", "Login"]
-    choice = st.sidebar.selectbox("Select an option", menu)
-
-    if choice == "Signup":
-        username = st.text_input("Username")
-        password = st.text_input("Password", type='password')
-
-        if st.button("Submit"):
-            cursor.execute("""
-            INSERT INTO users (username, password)
-            VALUES (?, ?)
-            """, (username, password))
-            conn.commit()
-            st.success("Successfully registered!")
-    else:
-        username = st.text_input("Username")
-        password = st.text_input("Password", type='password')
-
-        if st.button("Submit"):
-            cursor.execute("""
-            SELECT * FROM users
-            WHERE username = ? AND password = ?
-            """, (username, password))
-            result = cursor.fetchall()
-
-            if len(result) > 0:
-                st.success("Login successful!")
-                # Your existing Streamlit code goes here
-            else:
-                st.error("Incorrect username or password")
-
-if __name__ == "__main__":
-    main()
-
-
-
-
-
-
-
 
 
 
