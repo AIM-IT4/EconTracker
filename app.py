@@ -4,7 +4,66 @@ from fredapi import Fred
 
 KEY = '613446531ab453c057bdd1df7ec37bbb'
 fred = Fred(api_key=KEY)
-      
+
+import streamlit as st
+import sqlite3
+
+# Create the database and table if they don't exist
+conn = sqlite3.connect("users.db")
+cursor = conn.cursor()
+cursor.execute("""
+CREATE TABLE IF NOT EXISTS users (
+    username text,
+    password text
+)
+""")
+conn.commit()
+
+def main():
+    # Show the signup/login page
+    menu = ["Signup", "Login"]
+    choice = st.sidebar.selectbox("Select an option", menu)
+
+    if choice == "Signup":
+        username = st.text_input("Username")
+        password = st.text_input("Password", type='password')
+
+        if st.button("Submit"):
+            cursor.execute("""
+            INSERT INTO users (username, password)
+            VALUES (?, ?)
+            """, (username, password))
+            conn.commit()
+            st.success("Successfully registered!")
+    else:
+        username = st.text_input("Username")
+        password = st.text_input("Password", type='password')
+
+        if st.button("Submit"):
+            cursor.execute("""
+            SELECT * FROM users
+            WHERE username = ? AND password = ?
+            """, (username, password))
+            result = cursor.fetchall()
+
+            if len(result) > 0:
+                st.success("Login successful!")
+                # Your existing Streamlit code goes here
+            else:
+                st.error("Incorrect username or password")
+
+if __name__ == "__main__":
+    main()
+
+
+
+
+
+
+
+
+
+
 econ_dictionary = {
     # GDP
     'GDPC1': ['Real GDP $B'], 'A939RC0Q052SBEA': ['GDP/Capita'],
@@ -68,13 +127,13 @@ major_selection = st.sidebar.selectbox(
 )
 if major_selection == 'Home':
         st.markdown("Select data of your choice from left 👈")
-        st.image("Economics.jpg")
+        st.image("Eco.png")
         st.write("# Welcome to EconTracker ")
         st.markdown(
             """ 
-            EconTracker is a Streamlit-based open-source application designed to examine equities, bonds, commodities, and currencies for US Market. Utilizing the FRED API, EconTracker offers the ability to analyze various macro datasets.
+            EconTracker is a Streamlit-based open-source application designed to examine equities, bonds, commodities, and currencies for Indian Market. Utilizing the FRED API, EconTracker offers the ability to analyze various macro datasets.
 
-            EconTracker has multiple distinctive dashboards that showcase the General Economic Performance, Employment, FED  Instruments, Price Increase, Instability, Raw Materials, and Recession Possibilities. Choose a dashboard and experience the capabilities of EconTracker! 
+            EconTracker has multiple distinctive dashboards that showcase the General Economic Performance, Employment, RBI  Instruments, Price Increase, Instability, Raw Materials, and Recession Possibilities. Choose a dashboard and experience the capabilities of EconTracker! 
             
             
             #### Want to learn more?
@@ -510,6 +569,3 @@ if major_selection == 'Recession Risks':
     st.subheader("GDP-Based Recession Indicator Index")
     gdpr = to_df('JHGDPBRINDX', start_date, end_date)
     show_chart(gdpr)
-
-
-st.markdown("Copyright \u00A9 2023 Reserve Bank of India")
