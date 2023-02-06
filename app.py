@@ -510,3 +510,6 @@ if major_selection == 'Recession Risks':
     st.subheader("GDP-Based Recession Indicator Index")
     gdpr = to_df('JHGDPBRINDX', start_date, end_date)
     show_chart(gdpr)
+
+
+st.markdown("Copyright \u00A9 2023 Reserve Bank of India")
