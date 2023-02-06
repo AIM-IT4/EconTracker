@@ -71,9 +71,9 @@ if major_selection == 'Home':
         st.write("# Welcome to EconTracker ")
         st.markdown(
             """ 
-            EconTracker is a Streamlit-based open-source application designed to examine equities, bonds, commodities, and currencies for Indian Market. Utilizing the FRED API, EconTracker offers the ability to analyze various macro datasets.
+            EconTracker is a Streamlit-based open-source application designed to examine equities, bonds, commodities, and currencies for US Market. Utilizing the FRED API, EconTracker offers the ability to analyze various macro datasets.
 
-            EconTracker has multiple distinctive dashboards that showcase the General Economic Performance, Employment, RBI  Instruments, Price Increase, Instability, Raw Materials, and Recession Possibilities. Choose a dashboard and experience the capabilities of EconTracker! 
+            EconTracker has multiple distinctive dashboards that showcase the General Economic Performance, Employment, FED  Instruments, Price Increase, Instability, Raw Materials, and Recession Possibilities. Choose a dashboard and experience the capabilities of EconTracker! 
             
             
             #### Want to learn more?
