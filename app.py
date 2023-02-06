@@ -69,7 +69,7 @@ major_selection = st.sidebar.selectbox(
 )
 if major_selection == 'Home':
         st.markdown("Select data of your choice from left 👈")
-        st.image("Eco.png")
+        st.image("Economics.jpg")
         st.write("# Welcome to EconTracker ")
         st.markdown(
             """ 
