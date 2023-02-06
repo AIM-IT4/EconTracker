@@ -67,7 +67,7 @@ major_selection = st.sidebar.selectbox(
      "Fed's Tools", "Inflation","Volatility","Commodities", "Recession Risks")
 )
 if major_selection == 'Home':
-        st.image("Eco.png")
+        st.image("Economics.jpg")
         st.write("# Welcome to EconTracker ")
         st.markdown(
             """ 
