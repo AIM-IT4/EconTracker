@@ -1,7 +1,7 @@
 
 
 # EconTracker - US Economic Data Web App
-EconTracker is a web application that displays all relevant economic data related to the US economy. The app provides an intuitive and user-friendly interface for exploring various economic indicators, including GDP, unemployment rate, inflation rate, and more.
+EconTracker is a web application that displays all relevant economic data related to the US economy.This project was executed when I was working Reserve Bank of India. The app provides an intuitive and user-friendly interface for exploring various economic indicators, including GDP, unemployment rate, inflation rate, and more.
 
 Features
 Real-time data visualization of key US economic indicators
