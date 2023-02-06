@@ -5,6 +5,7 @@ from fredapi import Fred
 KEY = '613446531ab453c057bdd1df7ec37bbb'
 fred = Fred(api_key=KEY)
 
+
 econ_dictionary = {
     # GDP
     'GDPC1': ['Real GDP $B'], 'A939RC0Q052SBEA': ['GDP/Capita'],
