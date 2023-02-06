@@ -25,7 +25,7 @@ econ_dictionary = {
     'VIXCLS': [' VIX'], 'GVZCLS': [' CBOE Gold ETF Volatility'], 'OVXCLS': ['CBOE Crude Oil ETF Volatility Index'],       
     #Recession Risks
     'T10Y3M': [' 10-Year Treasury Constant Maturity Minus 3-Month Treasury Constant Maturity'], 'RECPROUSM156N':['Smoothed U.S. Recession Probabilities'], 'SAHMREALTIME':['Real-time Sahm Rule Recession Indicator'], 'JHGDPBRINDX':['GDP-Based Recession Indicator Index'],
-    'T10Y2Y': ['10-Year Treasury Constant Maturity Minus 2-Year Treasury Constant Maturity'],
+    'T10Y2Y': ['10-Year Treasury Constant Maturity Minus 2-Year Treasury Constant Maturity'],'BAA10Y':['Moodys Seasoned Baa Corporate Bond Yield Relative to Yield on 10-Year Treasury Constant Maturity'],
     #Commodities
     'DCOILWTICO':[' Crude Oil Prices: West Texas Intermediate (WTI) - Cushing, Oklahoma'],'DHHNGSP':['Henry Hub Natural Gas Spot Price'], 'GASREGW':['US Regular All Formulations Gas Price'], 'APU0000708111':['Average Price: Eggs, Grade A, Large (Cost per Dozen) in U.S. City Average'],
     'APU0000FF1101':['Average Price: Chicken Breast, Boneless (Cost per Pound) in U.S. City Average'], 'APU0000703112':['Average Price: Ground Beef, 100% Beef (Cost per Pound) in U.S. City Average'], 'APU000072610':['Average Price: Electricity per Kilowatt-Hour in U.S. City Average'], 
@@ -61,7 +61,7 @@ def show_chart(df):
     if len(df) > 1:
         st.line_chart(df)
     else:
-        st.warning('\Select an earlier START date to view a line chart over time')
+        st.warning('Select an earlier START date to view a line chart over time')
 major_selection = st.sidebar.selectbox(
     'Explore Data for:',
     ('Home','Overall Economic Activity', 'Labor Market',
@@ -69,7 +69,7 @@ major_selection = st.sidebar.selectbox(
 )
 if major_selection == 'Home':
         st.markdown("Select data of your choice from left 👈")
-        st.image("Economics.jpg")
+        st.image("Eco.png")
         st.write("# Welcome to EconTracker ")
         st.markdown(
             """ 
@@ -502,6 +502,9 @@ if major_selection == 'Recession Risks':
     st.subheader("10-Year Treasury Constant Maturity Minus 3-Month Treasury Constant Maturity")
     ttm = to_df('T10Y3M', start_date, end_date)
     show_chart(ttm)     
+    st.subheader("Moody's Seasoned Baa Corporate Bond Yield Relative to Yield on 10-Year Treasury Constant Maturity")
+    ttc= to_df('BAA10Y', start_date, end_date)
+    show_chart(ttc) 
     st.subheader("Smoothed U.S. Recession Probabilities")
     srp = to_df('RECPROUSM156N', start_date, end_date)
     show_chart(srp)  
