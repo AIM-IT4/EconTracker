@@ -9,8 +9,7 @@ Historical data comparison for selected indicators
 User-friendly interface for exploring economic data
 Access the Web App
 
-The EconTracker web app is hosted on Streamlit and can be accessed at the following URL:econtracker.streamlit.app
-
+The EconTracker web app is hosted on Streamlit and can be accessed at the following URL:(https://econtracker.streamlit.app/)
 
 Requirements
 In order to use the EconTracker web app, you will need an internet connection and a web browser such as Google Chrome, Mozilla Firefox, or Safari.
